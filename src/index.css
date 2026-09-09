@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Google Sans", system-ui, sans-serif;
+  --font-serif: "Libre Baskerville", serif;
+}
+
+body {
+  font-family: var(--font-sans);
+}

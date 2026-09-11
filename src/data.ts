@@ -2,9 +2,9 @@ export const presentationData = {
   "meta": {
     "title": "Planejamento Estratégico de Marketing & Vendas",
     "subtitle": "Bella Maria Pizzaria",
-    "date": "Setembro / 2026",
+    "date": "",
     "agency": "V4 COMPANY",
-    "purpose": "Construindo o crescimento da marca e escala de faturamento."
+    "purpose": ""
   },
   "slides": [
     {
@@ -13,9 +13,9 @@ export const presentationData = {
       "content_slots": {
         "titulo_principal": "Planejamento Estratégico de Marketing & Vendas",
         "subtitulo": "Bella Maria Pizzaria",
-        "data_apresentacao": "Setembro / 2026",
+        "data_apresentacao": "",
         "logo_agencia": "V4 COMPANY",
-        "legenda_rodape": "Construindo o crescimento da marca e escala de faturamento."
+        "legenda_rodape": ""
       }
     },
     {
@@ -25,8 +25,8 @@ export const presentationData = {
         "titulo": "Recapitulando sua jornada de aceleração",
         "etapas_timeline": ["Reunião Comercial", "Growth Class", "Kickoff (31/Ago)", "Elaboração do Planejamento", "Apresentação"],
         "etapa_atual_destacada": "Apresentação",
-        "label_fase_rodape": "Fase de Onboarding & Setup - Você está aqui",
-        "anotacoes_contextuais": "Onboarding finalizado, metas alinhadas, acessos e diagnósticos concluídos."
+        "label_fase_rodape": "Você está na fase de onboarding setup agora",
+        "anotacoes_contextuais": ""
       }
     },
     {
@@ -60,10 +60,29 @@ export const presentationData = {
       "slide_type": "diagnostic_analysis",
       "content_slots": {
         "titulo_slide": "Análise da Vitrine Social (Instagram)",
-        "insights_bullets": [
-          "Produto Premium Visual: Apelo estético fortíssimo. Como conversado: 'o cliente come com os olhos'.",
-          "Gargalo de Descoberta: O conteúdo orgânico (gerado com o filmmaker Léo) é excelente, mas não alcança novas pessoas na região.",
-          "Resultado atual: Clientes em potencial dizem 'não sabia que a pizzaria existia'."
+        "imagem_url": "https://i.imgur.com/oY02Y7b.png",
+        "image_placeholder": "Print do Instagram",
+        "insights_estruturados": [
+          {
+            "titulo": "Organização e Informações Claras",
+            "texto": "A biografia e os destaques estão bem estruturados e profissionais. O uso de ícones padronizados com as cores da marca e a presença de informações essenciais (horários, localização, link de pedidos e avaliações) facilitam a jornada de compra do cliente.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Apelo Visual do Produto",
+            "texto": "As fotos possuem excelente iluminação e destacam a qualidade da autêntica pizza napoletana. O foco no close-up das fatias evidencia o corniccione (borda aerada) e o frescor dos ingredientes, gerando forte desejo imediato de consumo.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Fadiga Visual no Feed",
+            "texto": "Há uma repetição excessiva do exato mesmo enquadramento (uma mão segurando uma fatia). A recomendação é diversificar o conteúdo intercalando com fotos do salão, bastidores do preparo no forno e vídeos humanizados da equipe ou clientes.",
+            "tipo": "negativo"
+          },
+          {
+            "titulo": "Posicionamento Genérico na Bio",
+            "texto": "A frase de abertura 'A melhor pizza da sua vida está aqui' é um clichê que não transmite valor real. A estratégia é substituir essa linha por um diferencial claro da marca, como o tempo de fermentação da massa ou a origem dos insumos utilizados.",
+            "tipo": "negativo"
+          }
         ]
       }
     },
@@ -72,11 +91,29 @@ export const presentationData = {
       "slide_type": "diagnostic_analysis",
       "content_slots": {
         "titulo_slide": "Análise do Site / Cardápio Web",
-        "insights_bullets": [
-          "Alta Validação: Taxa de retenção extraordinária. Clientes fiéis confirmam o Product Market Fit.",
-          "CRM Poderoso: Base proprietária rica com mais de 2.500 leads organizados por LTV, frequência e canal.",
-          "Taxa de Conversão: Oscilando entre 7% a 10%.",
-          "A estrutura visual é excelente; o foco agora deve ser trazer tráfego qualificado para alavancar esses números."
+        "imagem_url": "https://i.imgur.com/0XY8PUH.jpeg",
+        "image_placeholder": "Print do Cardápio Web",
+        "insights_estruturados": [
+          {
+            "titulo": "Posicionamento de Valor",
+            "texto": "Storytelling forte nas descrições citando fornecedores nobres (Fazenda Atalaia, Levitare), justificando com autoridade o ticket médio elevado (R$ 70 - R$ 80).",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Nomenclatura Estratégica",
+            "texto": "Categorização autêntica ('As Queridinhas', 'Criações do Chef') que humaniza a marca, reforça a identidade napoletana e guia o cliente na navegação.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Otimização de Leiturabilidade",
+            "texto": "Descrições densas que geram fadiga visual no mobile. A recomendação é simplificar os textos e adotar tags ('Mais Pedida') para acelerar a decisão de compra.",
+            "tipo": "negativo"
+          },
+          {
+            "titulo": "Alavancagem do Ticket Médio",
+            "texto": "Bebidas e sobremesas isoladas ao final do cardápio. A estratégia é criar combos de 'Experiência Completa' no topo para estimular o cross-sell.",
+            "tipo": "negativo"
+          }
         ]
       }
     },
@@ -85,25 +122,33 @@ export const presentationData = {
       "slide_type": "diagnostic_analysis",
       "content_slots": {
         "titulo_slide": "Análise do Gerenciador de Anúncios (Meta Ads)",
+        "image_placeholder": "Print do Gerenciador (Meta Ads)",
         "insights_bullets": [
-          "CTR Crítico: Taxa de clique em 0,18% nas campanhas antigas.",
-          "Qualidade do Público: Os anúncios estavam sendo mostrados para 'curiosos' ao invés de compradores qualificados.",
-          "Investimento Diluído: Verba anterior espalhada em 3 campanhas sem funil bem definido.",
-          "Oportunidade Geográfica: Necessidade de focar 100% em campanhas com raio geolocalizado para os residenciais."
+          "Falta de Visibilidade de Retorno: Anteriormente, havia investimento em tráfego, mas sem clareza se estava trazendo resultados ou vendas mensuráveis.",
+          "Falta de Funil e Geolocalização: Campanhas sem segmentação cirúrgica. Sendo um negócio local focado em qualidade e entrega (15-20 min), os raios precisam ser exatos (Alphaville, Residenciais, Aldeia da Serra).",
+          "Estratégia de Aquisição: Estruturar as campanhas de forma que o delivery atue como porta de entrada (Público Frio) e depois migrá-los para a experiência de Salão (Upsell)."
         ]
       }
     },
     {
       "id": "08_diferenciais",
-      "slide_type": "three_pillar_framework",
+      "slide_type": "vertical_feature_list",
       "content_slots": {
         "titulo": "Nossos Diferenciais Inegociáveis",
-        "pilar_1_nome": "Experiência Premium (Unboxing)",
-        "pilar_1_texto": "Embalagem dourada rígida e logística com frota própria para garantir que a pizza chegue impecável.",
-        "pilar_2_nome": "Inteligência de CRM",
-        "pilar_2_texto": "Uso de banco de dados próprio (+2.500 clientes) mapeado por LTV e recorrência para não reféns do iFood.",
-        "pilar_3_nome": "Autenticidade",
-        "pilar_3_texto": "Produto validado (80% de retenção), massa de 48h, focando exclusivamente na excelência da pizza."
+        "features": [
+          {
+            "titulo": "Experiência Premium e Qualidade do Produto",
+            "descricao": "Foco total na qualidade extrema: pizza napoletana autêntica, massa de longa fermentação (48h), molhos com tomates reais e ingredientes selecionados. 'A pessoa come com os olhos'. A refeição entrega uma imersão na cultura italiana."
+          },
+          {
+            "titulo": "Exclusividade e Identidade Visual Bem Marcada",
+            "descricao": "Unboxing de luxo com caixa dourada e embalagens premium. Posicionamento de marca forte que reflete luxo acessível e não se sujeita à 'guerra de preços' da concorrência local de fast-food."
+          },
+          {
+            "titulo": "Tratamento Exclusivo e Logística Ágil",
+            "descricao": "Entregas realizadas por frota de motoboys próprios. A pizza entra no forno apenas quando o motoboy chega, sendo entregue quente e intacta (estimativa de 15 a 20 minutos). A experiência do delivery reflete o mesmo cuidado do salão presencial."
+          }
+        ]
       }
     },
     {
@@ -115,31 +160,81 @@ export const presentationData = {
     },
     {
       "id": "10_benchmarking_1",
-      "slide_type": "competitor_benchmark",
+      "slide_type": "diagnostic_analysis",
       "content_slots": {
-        "titulo": "Benchmarking: A Vitrine Digital e Concorrentes",
-        "subtitulo": "Player",
-        "nome_concorrente": "Miobelo / Piro Pizzaria",
-        "insights_bullets": [
-          "Evitar Guerra de Preços: A Bella Maria Pizzaria não deve adotar linguagem focada em descontos agressivos para não diluir o valor da marca.",
-          "Diferenciação Visual: O conteúdo focado no 'chef' atuando na cozinha e a explicação da fermentação nos destacam drasticamente.",
-          "Frequência vs Relevância: Muito volume de postagem no concorrente, mas com baixo engajamento real do público comprador.",
-          "Abordagem: Foco em construção de marca e relacionamento, ao invés da venda agressiva que satura o cliente final."
+        "titulo_slide": "Benchmarking: Larezzo Pizzeria",
+        "imagem_url": "https://i.imgur.com/NM9ZFZl.png",
+        "insights_estruturados": [
+          {
+            "titulo": "Diversidade de Opções e Custo-Benefício",
+            "texto": "Os clientes valorizam a grande variedade de produtos (pizzas, mini-hambúrgueres, caldos). A abundância e preço acessível geram forte percepção de custo-benefício para grupos familiares.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Comunicação Clara de Preços e Combos",
+            "texto": "Postagens no feed destacam explicitamente valores, dias promocionais e itens inclusos, filtrando rapidamente objeções financeiras do público focado em preço.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Agregação de Entretenimento",
+            "texto": "A promoção de eventos de stand-up comedy integrados ao jantar cria um diferencial competitivo e atrai fluxo em dias específicos.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Experiência de Atendimento Crítica",
+            "texto": "Avaliações apontam queixas recorrentes de lentidão extrema e atitudes inflexíveis da equipe de salão, gerando promotores negativos da marca.",
+            "tipo": "negativo"
+          },
+          {
+            "titulo": "Panfletagem Digital e Poluição Visual",
+            "texto": "O feed atua como mural de ofertas com artes gráficas densas. A ausência de fotos reais e bem iluminadas enfraquece o desejo de consumo.",
+            "tipo": "negativo"
+          },
+          {
+            "titulo": "Quebra na Jornada Digital do Cliente",
+            "texto": "A infraestrutura de vendas apresenta falhas (link que direciona a uma página de erro), barrando a conversão e frustrando a intenção de compra online.",
+            "tipo": "negativo"
+          }
         ]
       }
     },
     {
       "id": "11_benchmarking_2",
-      "slide_type": "competitor_benchmark",
+      "slide_type": "diagnostic_analysis",
       "content_slots": {
-        "titulo": "Benchmarking: Descoberta Local e Validação",
-        "subtitulo": "Player",
-        "nome_concorrente": "Pizzarias Locais (Google Maps)",
-        "insights_bullets": [
-          "SEO Local e Confiança: Para solucionar o problema de 'ninguém me conhece', ter a ficha do Google muito bem nutrida é essencial.",
-          "Validação Social: Precisamos converter as altíssimas taxas de recompra do CRM em avaliações 5 estrelas no Google.",
-          "Otimização Visual: Atualizar fotos do ambiente e da pizza recém saída do forno para dar água na boca de quem pesquisa.",
-          "Atendimento e Respostas: Criar rotina de respostas ativas aos reviews positivos e negativos para aumentar relevância."
+        "titulo_slide": "Benchmarking: Mio Bello",
+        "imagem_url": "https://i.imgur.com/MDAtWIb.png",
+        "insights_estruturados": [
+          {
+            "titulo": "Excelência no Produto e Processo Artesanal",
+            "texto": "Forte elogio à qualidade da massa de longa fermentação, crocância e ingredientes premium, reforçando a proposta de valor na biografia.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Humanização através de Bastidores",
+            "texto": "Apesar de falhas estéticas, os vídeos mostrando a equipe em ação geram conexão autêntica e transmitem o cuidado real no preparo.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Gestão de Reputação e Educação",
+            "texto": "Proprietário responde ativamente no Google, justificando o preço e educando o público sobre os diferenciais (farinha italiana, 48h de fermentação).",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Poluição Visual e Identidade Confusa",
+            "texto": "Uso excessivo de artes gráficas e IA geram um feed inconsistente que não comunica o posicionamento premium da marca.",
+            "tipo": "negativo"
+          },
+          {
+            "titulo": "Gargalos Severos no Delivery",
+            "texto": "Falhas críticas com atrasos extremos e pizzas chegando frias. A ineficiência operacional destrói a experiência de consumo da alta qualidade.",
+            "tipo": "negativo"
+          },
+          {
+            "titulo": "Atendimento Inflexível e sem Empatia",
+            "texto": "Relatos de grosseria e inflexibilidade da equipe, como recusa abrupta de entregas habituais e incapacidade de assumir erros, afastando clientes recorrentes.",
+            "tipo": "negativo"
+          }
         ]
       }
     },
@@ -159,16 +254,16 @@ export const presentationData = {
       "content_slots": {
         "numero_persona": "1",
         "nome_persona": "O Apreciador de Experiências Premium (Classe A)",
-        "local": "Condomínios Residenciais",
-        "idade": "30 a 50 anos",
+        "local": "Região de Barueri (Alphaville, Residenciais)",
+        "idade": "30 a 45 anos",
         "profissao": "Executivos",
-        "renda": "Alta",
+        "renda": "A partir de R$ 7.000/mês",
         "genero": "Masculino / Feminino",
-        "dispositivo": "Smartphone, Tablet",
-        "canais": "Instagram, iFood, WhatsApp",
-        "dores_bullets": ["A pizza chega fria e sem requinte."],
-        "desejos_bullets": ["Ter uma experiência gourmet no conforto de casa ('Bella Maria em Casa')."],
-        "objecoes_bullets": ["Não conhecer a marca na região."]
+        "dispositivo": "Smartphone Premium (iOS)",
+        "canais": "Instagram, WhatsApp",
+        "dores_bullets": ["A pizza na região geralmente chega fria, com aspecto de 'fast-food' e sem requinte."],
+        "desejos_bullets": ["Ter uma experiência gastronômica autêntica no conforto de casa, como se estivesse na Itália."],
+        "objecoes_bullets": ["Não conhecer a marca na região e desconfiar da promessa de qualidade no delivery."]
       }
     },
     {
@@ -178,15 +273,15 @@ export const presentationData = {
         "numero_persona": "2",
         "nome_persona": "O Morador de Aldeia da Serra (Conveniência)",
         "local": "Aldeia da Serra",
-        "idade": "35 a 55 anos",
+        "idade": "35 a 50 anos",
         "profissao": "Empresários e Famílias",
-        "renda": "Alta",
+        "renda": "A partir de R$ 7.000/mês",
         "genero": "Feminino / Masculino",
         "dispositivo": "Smartphone Premium",
         "canais": "Instagram, Indicações, Google",
-        "dores_bullets": ["Ter que dirigir até 1 hora para consumir um produto de qualidade."],
-        "desejos_bullets": ["Encontrar um restaurante autêntico 'no meio do caminho'."],
-        "objecoes_bullets": ["Resistência em sair do seu reduto sem prova visual."]
+        "dores_bullets": ["Ter que dirigir até 1 hora para consumir um produto gastronômico de alta qualidade em São Paulo."],
+        "desejos_bullets": ["Encontrar um restaurante autêntico 'no meio do caminho' para frequentar presencialmente com a família."],
+        "objecoes_bullets": ["Resistência em sair do seu reduto sem uma prova social ou visual irrecusável."]
       }
     },
     {
@@ -194,29 +289,37 @@ export const presentationData = {
       "slide_type": "smart_goal_okr",
       "content_slots": {
         "titulo": "Objetivo SMART",
-        "fase_projeto": "STEP V1 (3 Meses)",
-        "objetivo_geral": "Consolidar a estratégia de Delivery via tráfego geolocalizado, direcionando tráfego para o cardápio e validando a retenção da base.",
-        "kr1_texto": "Vídeos focados em 'Making Of'.",
-        "kr2_texto": "Conversões 100% no Cardápio Web.",
-        "kr3_texto": "Expansão Lookalike Trimestre 2.",
+        "fase_projeto": "Até Dezembro (Período Variável)",
+        "objetivo_geral": "Encontrar os indicadores de tráfego e de performance com base na estratégia de campanhas decidida. Após esse período inicial de testes, definir a viabilidade do CAC, otimizar indicadores e, então, planejar e aplicar a escala.",
+        "kr1_texto": "Encontrar e estabelecer todos os indicadores base de performance (CAC, LTV, ROAS inicial).",
+        "kr2_texto": "Atingir o ROI 1 do projeto (Break-even).",
+        "kr3_texto": "Atingir um ROAS maior que 10 no final desse período de testes e validação.",
         "insights_operacionais": [
-          "Foco em tráfego geolocalizado restrito",
-          "Validar retenção da base",
-          "Eliminar dependência de pedidos manuais"
+          "Mapeamento claro de conversão",
+          "Foco na saúde da margem inicial",
+          "Projeção para escala futura"
         ]
       }
     },
     {
       "id": "13_estrategia",
-      "slide_type": "three_pillar_framework",
+      "slide_type": "vertical_feature_list",
       "content_slots": {
-        "titulo": "Definição da Estratégia de Aceleração",
-        "pilar_1_nome": "Descoberta (Reconhecimento Geográfico)",
-        "pilar_1_texto": "Anúncios hiper-segmentados mostrando o forno e ingredientes, sem forçar venda imediata, para criar desejo.",
-        "pilar_2_nome": "Conversão Direta (Delivery)",
-        "pilar_2_texto": "Uso do pixel no Cardápio Web para impactar quem visitou e não comprou (remarketing).",
-        "pilar_3_nome": "Migração (Para o Salão)",
-        "pilar_3_texto": "Pegar clientes fidelizados no delivery e levá-los para consumir no balcão/salão."
+        "titulo": "Estratégia de Aceleração & Growth",
+        "features": [
+          {
+            "titulo": "Roadmap de Implementação (Foco em Delivery e Dados)",
+            "descricao": "O mês 1 é 100% voltado para tracionar o Delivery através do Cardápio Web, centralizando os dados para validação do CAC e LTV exatos. A partir dos meses 2 e 3, entraremos com expansão de produtos (ex: Cannoli) e campanhas ativas no CRM/WhatsApp para fidelização e upsell presencial."
+          },
+          {
+            "titulo": "Isolamento Geográfico por Intenção",
+            "descricao": "Abordagem cirúrgica nos raios de atuação: campanhas de Conversão Delivery focadas em até 5km, garantindo a promessa de entrega impecável (15-20 min). Para Branding e Awareness, atuaremos em um raio estendido de 8 a 10km, fortalecendo a marca na região de Barueri e Alphaville."
+          },
+          {
+            "titulo": "Sazonalidade, Ociosidade e Projeto Aldeia da Serra",
+            "descricao": "A maior verba de conversão (60-70%) atacará a ociosidade de Terça a Quinta. A verba de final de semana focará em Branding e Salão. Além disso, teremos um projeto isolado focado no público classe A de Aldeia da Serra (20km), com o apelo de evitar a viagem a SP para ter a experiência gastronômica."
+          }
+        ]
       }
     },
     {
@@ -245,23 +348,18 @@ export const presentationData = {
     },
     {
       "id": "21_criativos",
-      "slide_type": "creative_scripts",
+      "slide_type": "creative_workflow",
       "content_slots": {
-        "titulo": "Direcionamento de Criativos (Roteiros)",
-        "roteiros": [
-          {
-            "tipo": "Reconhecimento (Salão)",
-            "tom": "Institucional, Elegante, Glamour e Experiência Local.",
-            "veiculacao": "Meta Ads (Sexta a Dom / Raio 8km).",
-            "estrutura": "(0-3s) Câmera lenta deslizando por taças de vinho e iluminação intimista do salão luxuoso da Bella Maria Pizzaria. (3-10s) Foco no ambiente, pessoas bem vestidas sorrindo. (10-15s) Garçom servindo a elegante pizza napolitana. (15-20s) CTA: 'Transforme momentos em experiências inesquecíveis. Visite a Bella Maria Pizzaria.'"
-          },
-          {
-            "tipo": "Conversão (Delivery)",
-            "tom": "Making-of, Qualidade de Produção e a Itália em Casa.",
-            "veiculacao": "Meta Ads (Quarta e Quinta / Raio 5km).",
-            "estrutura": "(0-3s) Close extremo na massa sendo delicadamente aberta à mão. (3-10s) Montagem rápida com ingredientes frescos e forno a lenha. (10-15s) Pizza saindo fumegante e embalada. (15-20s) CTA: 'A verdadeira pizza napolitana quente e impecável na sua mesa. Peça agora pelo cardápio digital.'"
-          }
-        ]
+        "titulo": "Workflow de Criativos",
+        "subtitulo": "Processo de elaboração, produção e veiculação dos materiais",
+        "passos": [
+          { "titulo": "Desenvolvimento do Copy", "icone": "FileText" },
+          { "titulo": "Aprovação Inicial", "icone": "CheckCircle2" },
+          { "titulo": "Produção & Captação", "icone": "Video" },
+          { "titulo": "Aprovação Final", "icone": "CheckCircle2" },
+          { "titulo": "Veiculação (Tráfego)", "icone": "Rocket" }
+        ],
+        "link_exemplo": "https://docs.google.com/document/d/17b5Gr6ZMnK67EezTwrIfh-UhNqKoVTvPzJgT7ywCO7I/edit?tab=t.0#heading=h.8nc7t76uhrlv"
       }
     },
     {
@@ -276,7 +374,9 @@ export const presentationData = {
       "slide_type": "spreadsheet_placeholder",
       "content_slots": {
         "titulo": "Cronograma & Fases de Implementação",
-        "tipo_planilha": "Cronograma"
+        "tipo_planilha": "Cronograma",
+        "imagem_url": "https://i.imgur.com/wIuXmOk.png",
+        "link_planilha": "https://docs.google.com/spreadsheets/d/1Bmqkf-7IFGMZEMWW5Wu-n8E1NoEOe-fkmM17oapbpxU/edit?gid=652949990#gid=652949990"
       }
     },
     {
@@ -284,7 +384,8 @@ export const presentationData = {
       "slide_type": "spreadsheet_placeholder",
       "content_slots": {
         "titulo": "Plano de Mídia (Investimento)",
-        "tipo_planilha": "Plano de Mídia"
+        "tipo_planilha": "Plano de Mídia",
+        "imagem_url": "https://i.imgur.com/22EhL8q.png"
       }
     }
   ]

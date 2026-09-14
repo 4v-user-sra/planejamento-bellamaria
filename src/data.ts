@@ -23,7 +23,7 @@ export const presentationData = {
       "slide_type": "process_timeline",
       "content_slots": {
         "titulo": "Recapitulando sua jornada de aceleração",
-        "etapas_timeline": ["Reunião Comercial", "Growth Class", "Kickoff (31/Ago)", "Elaboração do Planejamento", "Apresentação"],
+        "etapas_timeline": ["Reunião Comercial", "Growth Class", "Kickoff (03/Set)", "Elaboração do Planejamento", "Apresentação"],
         "etapa_atual_destacada": "Apresentação",
         "label_fase_rodape": "Você está na fase de onboarding setup agora",
         "anotacoes_contextuais": ""
@@ -159,40 +159,70 @@ export const presentationData = {
       }
     },
     {
+      "id": "09b_benchmarking_leggera",
+      "slide_type": "diagnostic_analysis",
+      "content_slots": {
+        "titulo_slide": "Benchmarking: Leggera Pizza Napoletana",
+        "imagem_url": "https://i.imgur.com/NBOhDRs.jpeg",
+        "imagens_secundarias": [
+          "https://i.imgur.com/g0Jl8yl.png",
+          "https://i.imgur.com/Swk7gpM.png",
+          "https://i.imgur.com/wgzGIpI.png"
+        ],
+        "insights_estruturados": [
+          {
+            "titulo": "Prova Social e Autoridade (Válido replicar)",
+            "texto": "Feed rico em validação externa com selos de premiações (\"Melhor da Gastronomia\"), indicações de autoridade (\"Fábio Indica\") e presença humana. Além disso, possuem forte validação no Google, acumulando 2.423 avaliações com uma excelente média de 4.3.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Storytelling pelos Destaques (Válido replicar)",
+            "texto": "Comunicação clara e detalhada que funciona como uma imersão no produto, utilizando os destaques (Pomodoro, Fiordilatte, Atendimento) para contar a história dos insumos nobres e educar o cliente sobre a experiência da casa.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Identidade Visual dos Destaques (Ponto a evitar)",
+            "texto": "Capas excessivamente simples (apenas círculos coloridos) que perdem o apelo visual do feed. Atualizar os ícones/imagens das capas aumentaria a taxa de cliques e o consumo desse conteúdo valioso.",
+            "tipo": "negativo"
+          },
+          {
+            "titulo": "Bio e Conversão Direta (Ponto a evitar)",
+            "texto": "Texto focado apenas no presencial (\"ordem de chegada\"), sem uma Chamada para Ação (CTA) clara ou link direto direcionado para cardápio digital, reservas ou canal de dúvidas ágil.",
+            "tipo": "negativo"
+          },
+          {
+            "titulo": "Fricção na Jornada de Pedido (Ponto a evitar)",
+            "texto": "O acesso ao cardápio é confuso: o cliente passa por um Linktree para cair em uma página pouco atrativa contendo apenas um PDF estático. Não existe um sistema claro e direto para facilitar o pedido online.",
+            "tipo": "negativo"
+          }
+        ]
+      }
+    },
+    {
       "id": "10_benchmarking_1",
       "slide_type": "diagnostic_analysis",
       "content_slots": {
-        "titulo_slide": "Benchmarking: Larezzo Pizzeria",
-        "imagem_url": "https://i.imgur.com/NM9ZFZl.png",
+        "titulo_slide": "Benchmarking: La Braciera",
+        "imagem_url": "https://i.imgur.com/fRad4HN.png",
         "insights_estruturados": [
           {
-            "titulo": "Diversidade de Opções e Custo-Benefício",
-            "texto": "Os clientes valorizam a grande variedade de produtos (pizzas, mini-hambúrgueres, caldos). A abundância e preço acessível geram forte percepção de custo-benefício para grupos familiares.",
+            "titulo": "Identidade Visual e Bio Padronizadas (Pontos Positivos)",
+            "texto": "Marca com linguagem visual altamente consistente entre a logo e o design dos ícones nos destaques. A bio é bem centralizada, transmitindo clareza e reforçando posições estratégicas de autoridade.",
             "tipo": "positivo"
           },
           {
-            "titulo": "Comunicação Clara de Preços e Combos",
-            "texto": "Postagens no feed destacam explicitamente valores, dias promocionais e itens inclusos, filtrando rapidamente objeções financeiras do público focado em preço.",
+            "titulo": "Projeção de Autoridade e Prova Social (Pontos Positivos)",
+            "texto": "Excelente exploração de selos internacionais (50 Top Pizza) e grande volume de seguidores, consolidando uma percepção de rede consagrada e referência no mercado de pizza napoletana.",
             "tipo": "positivo"
           },
           {
-            "titulo": "Agregação de Entretenimento",
-            "texto": "A promoção de eventos de stand-up comedy integrados ao jantar cria um diferencial competitivo e atrai fluxo em dias específicos.",
-            "tipo": "positivo"
-          },
-          {
-            "titulo": "Experiência de Atendimento Crítica",
-            "texto": "Avaliações apontam queixas recorrentes de lentidão extrema e atitudes inflexíveis da equipe de salão, gerando promotores negativos da marca.",
+            "titulo": "Foco Institucional em Detrimento do Produto (Oportunidades de Melhoria)",
+            "texto": "Excesso de capas em vídeo focadas em estilo de vida, prêmios e bastidores. O feed prioriza a experiência social e a marca, pecando por não ter uma narrativa comercial focada no produto (appetite appeal).",
             "tipo": "negativo"
           },
           {
-            "titulo": "Panfletagem Digital e Poluição Visual",
-            "texto": "O feed atua como mural de ofertas com artes gráficas densas. A ausência de fotos reais e bem iluminadas enfraquece o desejo de consumo.",
-            "tipo": "negativo"
-          },
-          {
-            "titulo": "Quebra na Jornada Digital do Cliente",
-            "texto": "A infraestrutura de vendas apresenta falhas (link que direciona a uma página de erro), barrando a conversão e frustrando a intenção de compra online.",
+            "titulo": "Fricção na Jornada até o Cardápio (Oportunidades de Melhoria)",
+            "texto": "O caminho de compra possui etapas demais (link da bio → página externa → seleção de unidade → redirecionamento iFood). Apesar de a informação estar clara, o excesso de cliques aumenta o risco de abandono na conversão.",
             "tipo": "negativo"
           }
         ]
@@ -261,9 +291,9 @@ export const presentationData = {
         "genero": "Masculino / Feminino",
         "dispositivo": "Smartphone Premium (iOS)",
         "canais": "Instagram, WhatsApp",
-        "dores_bullets": ["A pizza na região geralmente chega fria, com aspecto de 'fast-food' e sem requinte."],
-        "desejos_bullets": ["Ter uma experiência gastronômica autêntica no conforto de casa, como se estivesse na Itália."],
-        "objecoes_bullets": ["Não conhecer a marca na região e desconfiar da promessa de qualidade no delivery."]
+        "dores_bullets": ["Frustração com delivery de pizzas que chegam frias ou com massa borrachuda.", "Dificuldade em encontrar um ambiente sofisticado para jantares de casal ou família.", "Experiências negativas com atendimento lento e desatento na região."],
+        "desejos_bullets": ["Experiência gastronômica autêntica (verdadeira massa napoletana, ingredientes premium).", "Status e exclusividade (frequentar um ambiente que reflita seu estilo de vida).", "Conveniência absoluta sem abrir mão da alta qualidade."],
+        "objecoes_bullets": ["O valor mais alto é justificado apenas pelo sabor?", "O delivery vai arruinar a qualidade e crocância da pizza?", "O salão físico é realmente confortável e seguro para a família?"]
       }
     },
     {
@@ -279,9 +309,9 @@ export const presentationData = {
         "genero": "Feminino / Masculino",
         "dispositivo": "Smartphone Premium",
         "canais": "Instagram, Indicações, Google",
-        "dores_bullets": ["Ter que dirigir até 1 hora para consumir um produto gastronômico de alta qualidade em São Paulo."],
-        "desejos_bullets": ["Encontrar um restaurante autêntico 'no meio do caminho' para frequentar presencialmente com a família."],
-        "objecoes_bullets": ["Resistência em sair do seu reduto sem uma prova social ou visual irrecusável."]
+        "dores_bullets": ["Falta de opções gastronômicas premium no seu próprio raio de moradia.", "Cansaço de longos deslocamentos para ter um jantar especial.", "Falta de confiança em novas marcas locais sem forte prova social."],
+        "desejos_bullets": ["Conveniência local de altíssimo padrão (a poucos minutos de casa).", "Um ambiente acolhedor e seguro para a família.", "Atendimento personalizado que o faça se sentir um cliente exclusivo."],
+        "objecoes_bullets": ["Vale a pena trocar meu restaurante de confiança em SP por uma opção local?", "O ambiente é adequado para levar as crianças?", "A qualidade dos ingredientes é realmente premium?"]
       }
     },
     {
@@ -375,7 +405,7 @@ export const presentationData = {
       "content_slots": {
         "titulo": "Cronograma & Fases de Implementação",
         "tipo_planilha": "Cronograma",
-        "imagem_url": "https://i.imgur.com/wIuXmOk.png",
+        "imagem_url": "https://i.imgur.com/Gr2d8w2.png",
         "link_planilha": "https://docs.google.com/spreadsheets/d/1Bmqkf-7IFGMZEMWW5Wu-n8E1NoEOe-fkmM17oapbpxU/edit?gid=652949990#gid=652949990"
       }
     },

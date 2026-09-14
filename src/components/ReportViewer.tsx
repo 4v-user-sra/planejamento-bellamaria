@@ -155,22 +155,33 @@ function RenderBlock({ slide }: { slide: any }) {
           
           {/* Sessão de Imagem / Print */}
           {(d.imagem_url || d.image_placeholder) && (
-            <div className={`mt-4 w-full rounded-2xl border-2 ${d.imagem_url ? (isLight ? 'border-zinc-200 shadow-xl' : 'border-zinc-800 shadow-2xl') : (isLight ? 'border-dashed border-zinc-300 bg-zinc-50' : 'border-dashed border-zinc-800 bg-zinc-900/50')} overflow-hidden flex items-center justify-center relative`}>
-               {d.imagem_url ? (
-                  <img 
-                    src={d.imagem_url} 
-                    alt="Print da Plataforma" 
-                    className="w-full h-auto object-contain cursor-pointer transition-transform hover:scale-[1.02]" 
-                    style={{ maxHeight: '750px' }} 
-                    onClick={() => setExpandedImage(d.imagem_url)}
-                  />
-               ) : (
-                  <div className="flex flex-col items-center justify-center text-center p-12 opacity-50 min-h-[250px]">
-                     <Target className="w-12 h-12 mb-4" />
-                     <p className="font-bold text-lg">{d.image_placeholder}</p>
-                     <p className="text-sm mt-2">Área reservada para inserir a imagem</p>
-                  </div>
-               )}
+            <div className="flex flex-col gap-4">
+              <div className={`mt-4 w-full rounded-2xl border-2 ${d.imagem_url ? (isLight ? 'border-zinc-200 shadow-xl' : 'border-zinc-800 shadow-2xl') : (isLight ? 'border-dashed border-zinc-300 bg-zinc-50' : 'border-dashed border-zinc-800 bg-zinc-900/50')} overflow-hidden flex items-center justify-center relative`}>
+                 {d.imagem_url ? (
+                    <img 
+                      src={d.imagem_url} 
+                      alt="Print da Plataforma" 
+                      className="w-full h-auto object-contain cursor-pointer transition-transform hover:scale-[1.02]" 
+                      style={{ maxHeight: '650px' }} 
+                      onClick={() => setExpandedImage(d.imagem_url)}
+                    />
+                 ) : (
+                    <div className="flex flex-col items-center justify-center text-center p-12 opacity-50 min-h-[250px]">
+                       <Target className="w-12 h-12 mb-4" />
+                       <p className="font-bold text-lg">{d.image_placeholder}</p>
+                       <p className="text-sm mt-2">Área reservada para inserir a imagem</p>
+                    </div>
+                 )}
+              </div>
+              {d.imagens_secundarias && (
+                <div className="flex gap-4 w-full">
+                  {d.imagens_secundarias.map((imgUrl: string, idx: number) => (
+                    <div key={idx} className={`flex-1 rounded-xl border-2 ${isLight ? 'border-zinc-200 shadow-md' : 'border-zinc-800 shadow-xl'} overflow-hidden cursor-pointer transition-transform hover:scale-105`} onClick={() => setExpandedImage(imgUrl)}>
+                      <img src={imgUrl} alt={`Destaque ${idx + 1}`} className="w-full h-full object-cover aspect-square" />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -494,63 +505,101 @@ function RenderBlock({ slide }: { slide: any }) {
       <div className="flex flex-col items-center py-12 w-full overflow-x-auto">
          <h2 className={`text-4xl font-bold ${titleColor} mb-16 self-start`}>{d.titulo}</h2>
          
-         <div className="min-w-[800px] w-full flex flex-col items-center">
+         <div className="min-w-[900px] w-full flex flex-col items-center relative">
            {/* Top Node */}
-           <div className={`bg-blue-900/30 border border-blue-500/50 text-blue-400 font-bold px-8 py-4 rounded-xl flex items-center gap-3`}>
+           <div className={`bg-blue-900/30 border border-blue-500/50 text-blue-400 font-bold px-8 py-4 rounded-xl flex items-center gap-3 z-10`}>
               <Network className="w-5 h-5" />
-              {d.node_top || 'Meta Ads & Tráfego Pago'}
+              Meta Ads & Tráfego Pago
            </div>
 
+           {/* Vertical line from Top */}
            <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
+           
+           {/* Horizontal span line covering all 3 branches */}
            <div className={`w-[80%] h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
            
+           {/* 3 Dropdown lines */}
            <div className="flex w-[80%] justify-between">
-              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}><ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} /></div>
-              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}><ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} /></div>
-              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}><ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} /></div>
+              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
+                <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+              </div>
+              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
+                <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+              </div>
+              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
+                <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+              </div>
            </div>
 
-           <div className="flex w-full justify-between gap-6 px-12 mt-4">
-             {d.branches ? d.branches.map((b: any, i: number) => (
-               <div key={i} className={`flex-1 ${cardBg} p-6 rounded-xl text-center shadow-lg`}>
-                  <h4 className="font-bold text-red-500 mb-2 text-xl">{b.titulo}</h4>
-                  <p className={`text-sm ${subtitleColor}`}>{b.descricao}</p>
-               </div>
-             )) : (
-               <>
-                 <div className={`flex-1 ${cardBg} p-6 rounded-xl text-center shadow-lg`}>
-                    <h4 className="font-bold text-red-500 mb-2 text-xl">Reconhecimento</h4>
-                    <p className={`text-sm ${subtitleColor}`}>Público Frio • Awareness</p>
-                 </div>
-                 <div className={`flex-1 ${cardBg} p-6 rounded-xl text-center shadow-lg`}>
-                    <h4 className="font-bold text-red-500 mb-2 text-xl">Conversão Delivery</h4>
-                    <p className={`text-sm ${subtitleColor}`}>Remarketing • Foco em Pedidos</p>
-                 </div>
-                 <div className={`flex-1 ${cardBg} p-6 rounded-xl text-center shadow-lg`}>
-                    <h4 className="font-bold text-red-500 mb-2 text-xl">Tração de Salão</h4>
-                    <p className={`text-sm ${subtitleColor}`}>Pino Fixo • Experiência Local</p>
-                 </div>
-               </>
-             )}
+           {/* Branch Nodes */}
+           <div className="flex w-full justify-between gap-6 px-12 mt-4 z-10">
+             <div className={`flex-1 ${cardBg} p-6 rounded-xl text-center shadow-lg relative`}>
+                <h4 className="font-bold text-red-500 mb-2 text-xl">Reconhecimento</h4>
+                <p className={`text-sm ${subtitleColor}`}>Público Frio • Awareness</p>
+             </div>
+             <div className={`flex-1 ${cardBg} p-6 rounded-xl text-center shadow-lg relative`}>
+                <h4 className="font-bold text-red-500 mb-2 text-xl">Conversão Delivery</h4>
+                <p className={`text-sm ${subtitleColor}`}>Remarketing • Foco em Pedidos</p>
+             </div>
+             <div className={`flex-1 ${cardBg} p-6 rounded-xl text-center shadow-lg relative`}>
+                <h4 className="font-bold text-red-500 mb-2 text-xl">Tração de Salão</h4>
+                <p className={`text-sm ${subtitleColor}`}>Pino Fixo • Experiência Local</p>
+             </div>
            </div>
 
-           <div className="flex w-[80%] justify-between mt-6">
-              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
-              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
-              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
-           </div>
-           <div className={`w-[80%] h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
-           <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}><ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} /></div>
+           {/* Separate Convergence Paths */}
+           <div className="flex w-full justify-between gap-6 px-12 mt-0">
+             
+             {/* Left Group (Converges to Cardápio Web) */}
+             <div className="flex-[2] flex flex-col items-center relative pt-6">
+                <div className="flex w-[60%] justify-between absolute top-0">
+                  <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
+                  <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
+                </div>
+                <div className={`w-[60%] h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} mt-8`} />
+                <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
+                  <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+                </div>
+                <div className="bg-red-600 text-white font-bold px-12 py-4 rounded-xl shadow-xl shadow-red-900/30 flex flex-col items-center gap-1 text-center mt-2 z-10 w-full max-w-sm justify-center">
+                   <span className="text-lg">Cardápio Web</span>
+                   <span className="text-sm font-normal text-red-100">Conversão Direta</span>
+                </div>
+             </div>
 
-           <div className="bg-red-600 text-white font-bold px-12 py-5 rounded-xl shadow-xl shadow-red-900/30 flex items-center gap-3 text-lg mt-4">
-              {d.node_bottom_1 || 'Cardápio Web & Salão Físico'}
+             {/* Right Group (Goes to Visita ao Instagram) */}
+             <div className="flex-[1] flex flex-col items-center relative pt-6">
+                <div className={`h-16 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
+                  <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+                </div>
+                <div className="bg-indigo-600 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-900/30 flex flex-col items-center gap-1 text-center mt-2 z-10 w-full">
+                   <span className="text-lg">Visita ao Instagram</span>
+                   <span className="text-sm font-normal text-indigo-200">Reconhecimento de Marca</span>
+                </div>
+             </div>
+             
            </div>
 
-           <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}><ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} /></div>
+           {/* Connectors from Cardápio Web to CRM */}
+           <div className="w-full relative h-12">
+             {/* Vertical drop from Cardápio Web */}
+             <div className={`absolute top-0 h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} style={{ left: 'calc(48px + (100% - 120px) / 3)' }} />
+             
+             {/* Horizontal line from Cardápio Web to Center */}
+             <div className={`absolute top-12 h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} style={{ left: 'calc(48px + (100% - 120px) / 3)', right: '50%' }} />
 
-           <div className="bg-emerald-900/30 border border-emerald-500/50 text-emerald-400 font-bold px-8 py-4 rounded-xl flex items-center gap-3 mt-4">
-              {d.node_bottom_2 || 'CRM, Retenção & LTV'}
+             {/* Vertical drop down into CRM */}
+             <div className={`absolute top-12 h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} style={{ left: '50%' }}>
+               <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+             </div>
            </div>
+
+           {/* Final CRM node */}
+           <div className="flex w-full flex-col items-center mt-8 relative z-10">
+              <div className="bg-emerald-900/30 border border-emerald-500/50 text-emerald-400 font-bold px-12 py-4 rounded-xl flex items-center gap-3">
+                 CRM, Retenção & LTV
+              </div>
+           </div>
+
          </div>
       </div>
     )

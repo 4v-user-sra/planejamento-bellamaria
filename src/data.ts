@@ -389,7 +389,7 @@ export const presentationData = {
           { "titulo": "Aprovação Final", "icone": "CheckCircle2" },
           { "titulo": "Veiculação (Tráfego)", "icone": "Rocket" }
         ],
-        "link_exemplo": "https://docs.google.com/document/d/17b5Gr6ZMnK67EezTwrIfh-UhNqKoVTvPzJgT7ywCO7I/edit?tab=t.0#heading=h.8nc7t76uhrlv"
+        "link_exemplo": "https://docs.google.com/document/d/1pjVmXmbODcWd_dyi_iuT1qJhr8PKQfFaIEwHw214Xnc/edit?tab=t.0"
       }
     },
     {

@@ -366,16 +366,16 @@ export const presentationData = {
         "titulo": "Estratégia de Aceleração & Growth",
         "features": [
           {
-            "titulo": "Roadmap de Implementação (Foco em Delivery e Dados)",
-            "descricao": "O mês 1 é 100% voltado para tracionar o Delivery através do Cardápio Web, centralizando os dados para validação do CAC e LTV exatos. A partir dos meses 2 e 3, entraremos com expansão de produtos (ex: Cannoli) e campanhas ativas no CRM/WhatsApp para fidelização e upsell presencial."
+            "titulo": "Roadmap de Implementação (Foco em Conversão e Dados)",
+            "descricao": "O mês 1 é 100% voltado para tracionar as Compras no Cardápio Web (onde o CPA de R$13,70 já foi validado historicamente), aplicando o orçamento aprovado de R$3.000/mês para gerar pedidos rastreados. Nos meses seguintes, expansão de ofertas e uso do CRM/WhatsApp para fidelização e LTV."
           },
           {
-            "titulo": "Isolamento Geográfico por Intenção",
-            "descricao": "Abordagem cirúrgica nos raios de atuação: campanhas de Conversão Delivery focadas em até 5km, garantindo a promessa de entrega impecável (15-20 min). Para Branding e Awareness, atuaremos em um raio estendido de 8 a 10km, fortalecendo a marca na região de Barueri e Alphaville."
+            "titulo": "Isolamento Geográfico e Rotação de Criativos",
+            "descricao": "Abordagem cirúrgica nos raios de atuação: campanhas de Conversão focadas na região de entrega para garantir o tempo de entrega impecável (15-20 min). Aplicação mandatória da regra de renovação de criativos a cada 3 a 4 semanas para evitar a fadiga de público e manter o CPA baixo."
           },
           {
-            "titulo": "Sazonalidade, Ociosidade e Projeto Aldeia da Serra",
-            "descricao": "A maior verba de conversão (60-70%) atacará a ociosidade de Terça a Quinta. A verba de final de semana focará em Branding e Salão. Além disso, teremos um projeto isolado focado no público classe A de Aldeia da Serra (20km), com o apelo de evitar a viagem a SP para ter a experiência gastronômica."
+            "titulo": "Distribuição de Demanda e Projeto Aldeia da Serra",
+            "descricao": "A verba principal de Conversão (85% / R$2.550) e Remarketing (15% / R$450) atuará focada em manter o fluxo contínuo de pedidos no Cardápio Web. Em paralelo, a comunicação contempla o posicionamento de alta gastronomia para atrair o público de alto padrão (como Aldeia da Serra), valorizando a autêntica experiência napoletana sem precisar se deslocar até SP."
           }
         ]
       }

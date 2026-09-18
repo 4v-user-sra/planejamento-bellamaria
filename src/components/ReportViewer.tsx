@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { presentationData } from "../data"
-import { ArrowUpRight, ArrowRight, Target, Lightbulb, PlayCircle, Star, Calendar, CheckCircle2, ChevronRight, FileSpreadsheet, Network, FileText, Video, Rocket, ExternalLink } from "lucide-react"
+import { ArrowUpRight, ArrowRight, Target, Lightbulb, PlayCircle, Star, Calendar, CheckCircle2, ChevronRight, FileSpreadsheet, Network, FileText, Video, Rocket, ExternalLink, AlertTriangle, ShoppingCart, Ban, RefreshCw, BarChart2, TrendingUp, DollarSign } from "lucide-react"
 
 const themeMap: Record<string, string> = {
   "01_capa": "bg-zinc-950 text-zinc-300 border-zinc-900",
@@ -500,107 +500,586 @@ function RenderBlock({ slide }: { slide: any }) {
     )
   }
 
+
+const HistoricalMetaAdsChart = ({ isLight }: { isLight: boolean }) => {
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
+  const data = [
+    { mes: "Jan", pedidos: 45, cpa: 8.33, invest: "R$ 374,85", obs: "Campanhas com criativo e público frescos" },
+    { mes: "Fev", pedidos: 59, cpa: 21.09, invest: "R$ 1.244,31", obs: "Aumento de verba inicial" },
+    { mes: "Mar", pedidos: 76, cpa: 8.41, invest: "R$ 639,16", obs: "Excelente tração e eficiência (CPA R$8,41)" },
+    { mes: "Abr", pedidos: 83, cpa: 11.83, invest: "R$ 981,89", obs: "Pico de volume de pedidos (83 pedidos)" },
+    { mes: "Mai", pedidos: 6, cpa: 15.92, invest: "R$ 95,42", obs: "Queda brusca: verba de Compra quase parou (só R$95,42)" },
+    { mes: "Jun", pedidos: 68, cpa: 14.63, invest: "R$ 994,82", obs: "Retomada da verba de compras" },
+    { mes: "Jul", pedidos: 36, cpa: 19.85, invest: "R$ 714,60", obs: "Início da fadiga de público e criativo" },
+    { mes: "Ago", pedidos: 11, cpa: 33.78, invest: "R$ 371,56", obs: "Fadiga severa: mesmo criativo mantido sem troca" }
+  ];
+
+  const maxPedidos = 100;
+  const maxCpa = 40;
+  const cpaMedia = 13.70;
+
+  const svgWidth = 860;
+  const svgHeight = 280;
+  const paddingLeft = 55;
+  const paddingRight = 65;
+  const paddingTop = 35;
+  const paddingBottom = 45;
+
+  const plotWidth = svgWidth - paddingLeft - paddingRight;
+  const plotHeight = svgHeight - paddingTop - paddingBottom;
+
+  const getX = (index: number) => paddingLeft + (index + 0.5) * (plotWidth / data.length);
+  const getYPedidos = (val: number) => paddingTop + plotHeight - (val / maxPedidos) * plotHeight;
+  const getYCpa = (val: number) => paddingTop + plotHeight - (val / maxCpa) * plotHeight;
+
+  const yCpaMedia = getYCpa(cpaMedia);
+
+  const linePoints = data.map((d, i) => `${getX(i)},${getYCpa(d.cpa)}`).join(" ");
+
+  return (
+    <div className={`w-full rounded-2xl border ${isLight ? 'bg-white border-zinc-200' : 'bg-zinc-900/90 border-zinc-800'} p-6 shadow-xl`}>
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6 border-b pb-4 border-zinc-200 dark:border-zinc-800">
+        <div>
+          <div className="flex items-center gap-2">
+            <BarChart2 className="w-5 h-5 text-red-600" />
+            <h3 className={`text-lg font-bold ${isLight ? 'text-zinc-900' : 'text-zinc-100'}`}>
+              Histórico de Vendas & CPA Mensal (Jan - Ago)
+            </h3>
+          </div>
+          <p className={`text-xs mt-1 ${isLight ? 'text-zinc-500' : 'text-zinc-400'}`}>
+            Campanhas de Compra (Cardápio Web) — volume de pedidos vs. custo por aquisição
+          </p>
+        </div>
+
+        {/* Legend */}
+        <div className="flex flex-wrap items-center gap-5 text-xs font-semibold">
+          <div className="flex items-center gap-2">
+            <div className="w-3.5 h-3.5 rounded bg-red-600 shadow-sm" />
+            <span className={isLight ? 'text-zinc-700' : 'text-zinc-300'}>Pedidos (Barras)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-1 bg-amber-500 rounded-full" />
+            <div className="w-2.5 h-2.5 rounded-full bg-amber-500 -ml-3.5" />
+            <span className={isLight ? 'text-zinc-700' : 'text-zinc-300'}>CPA em R$ (Linha)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-0.5 border-b-2 border-dashed border-emerald-500" />
+            <span className="text-emerald-600 dark:text-emerald-400 font-bold">Média: R$13,70</span>
+          </div>
+        </div>
+      </div>
+
+      {/* SVG Chart */}
+      <div className="relative w-full overflow-x-auto">
+        <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full h-auto min-w-[650px] font-sans">
+          {/* Grid lines */}
+          {[0, 25, 50, 75, 100].map((val) => {
+            const y = getYPedidos(val);
+            return (
+              <g key={val}>
+                <line
+                  x1={paddingLeft}
+                  y1={y}
+                  x2={svgWidth - paddingRight}
+                  y2={y}
+                  stroke={isLight ? '#f1f5f9' : '#27272a'}
+                  strokeWidth="1"
+                />
+                {/* Left Y-axis label (Pedidos) */}
+                <text
+                  x={paddingLeft - 10}
+                  y={y + 4}
+                  textAnchor="end"
+                  fontSize="10"
+                  fill={isLight ? '#94a3b8' : '#71717a'}
+                  fontWeight="600"
+                >
+                  {val}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* Right Y-axis labels (CPA) */}
+          {[0, 10, 20, 30, 40].map((val) => {
+            const y = getYCpa(val);
+            return (
+              <text
+                key={val}
+                x={svgWidth - paddingRight + 10}
+                y={y + 4}
+                textAnchor="start"
+                fontSize="10"
+                fill="#f59e0b"
+                fontWeight="700"
+              >
+                R${val}
+              </text>
+            );
+          })}
+
+          {/* Reference Line for Average CPA */}
+          <line
+            x1={paddingLeft}
+            y1={yCpaMedia}
+            x2={svgWidth - paddingRight}
+            y2={yCpaMedia}
+            stroke="#10b981"
+            strokeWidth="1.5"
+            strokeDasharray="4 4"
+          />
+          <text
+            x={svgWidth - paddingRight - 8}
+            y={yCpaMedia - 6}
+            textAnchor="end"
+            fontSize="10"
+            fill="#10b981"
+            fontWeight="bold"
+          >
+            CPA Médio R$13,70
+          </text>
+
+          {/* Bars for Pedidos */}
+          {data.map((d, i) => {
+            const x = getX(i);
+            const barWidth = 38;
+            const barHeight = (d.pedidos / maxPedidos) * plotHeight;
+            const y = getYPedidos(d.pedidos);
+            const isHovered = hoveredIdx === i;
+
+            return (
+              <g
+                key={i}
+                className="cursor-pointer transition-all duration-200"
+                onMouseEnter={() => setHoveredIdx(i)}
+                onMouseLeave={() => setHoveredIdx(null)}
+              >
+                {/* Bar */}
+                <rect
+                  x={x - barWidth / 2}
+                  y={y}
+                  width={barWidth}
+                  height={barHeight}
+                  rx="6"
+                  fill={d.pedidos < 15 ? '#f43f5e' : '#dc2626'}
+                  opacity={isHovered ? 1 : 0.85}
+                  className="transition-opacity duration-200"
+                />
+                
+                {/* Pedidos value label on top of bar */}
+                <text
+                  x={x}
+                  y={y - 6}
+                  textAnchor="middle"
+                  fontSize="11"
+                  fontWeight="bold"
+                  fill={isLight ? '#1e293b' : '#f8fafc'}
+                >
+                  {d.pedidos}
+                </text>
+
+                {/* X-axis label (Mês) */}
+                <text
+                  x={x}
+                  y={svgHeight - 15}
+                  textAnchor="middle"
+                  fontSize="12"
+                  fontWeight={isHovered ? 'bold' : '600'}
+                  fill={isHovered ? '#dc2626' : isLight ? '#475569' : '#a1a1aa'}
+                >
+                  {d.mes}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* CPA Line Path */}
+          <polyline
+            fill="none"
+            stroke="#f59e0b"
+            strokeWidth="3.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            points={linePoints}
+          />
+
+          {/* CPA Dots & Badges */}
+          {data.map((d, i) => {
+            const x = getX(i);
+            const y = getYCpa(d.cpa);
+            const isHovered = hoveredIdx === i;
+
+            return (
+              <g
+                key={i}
+                className="cursor-pointer"
+                onMouseEnter={() => setHoveredIdx(i)}
+                onMouseLeave={() => setHoveredIdx(null)}
+              >
+                {/* Outer halo */}
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={isHovered ? 8 : 5}
+                  fill="#f59e0b"
+                  stroke={isLight ? '#ffffff' : '#18181b'}
+                  strokeWidth="2.5"
+                  className="transition-all duration-200 shadow-md"
+                />
+
+                {/* CPA Pill/Label */}
+                <g transform={`translate(${x}, ${y + (i === 1 || i === 7 ? -14 : 18)})`}>
+                  <rect
+                    x="-24"
+                    y="-9"
+                    width="48"
+                    height="17"
+                    rx="8"
+                    fill={isLight ? '#fffbeb' : '#451a03'}
+                    stroke="#f59e0b"
+                    strokeWidth="1"
+                    className="shadow-sm"
+                  />
+                  <text
+                    x="0"
+                    y="3"
+                    textAnchor="middle"
+                    fontSize="9.5"
+                    fontWeight="800"
+                    fill={isLight ? '#b45309' : '#fbbf24'}
+                  >
+                    R${d.cpa.toFixed(2).replace('.', ',')}
+                  </text>
+                </g>
+              </g>
+            );
+          })}
+        </svg>
+      </div>
+
+      {/* Dynamic Hover Details or Default Callouts */}
+      {hoveredIdx !== null ? (
+        <div className={`mt-4 p-4 rounded-xl border transition-all ${isLight ? 'bg-red-50/80 border-red-200' : 'bg-red-950/30 border-red-900/50'} flex items-center justify-between gap-4`}>
+          <div className="flex items-center gap-3">
+            <span className="text-xl font-black text-red-600">{data[hoveredIdx].mes} 2026</span>
+            <span className={`text-sm ${isLight ? 'text-zinc-600' : 'text-zinc-300'}`}>• {data[hoveredIdx].obs}</span>
+          </div>
+          <div className="flex items-center gap-6 text-sm font-bold">
+            <div>Pedidos: <span className="text-red-600">{data[hoveredIdx].pedidos}</span></div>
+            <div>Investimento: <span className="text-indigo-600">{data[hoveredIdx].invest}</span></div>
+            <div>CPA: <span className="text-amber-600">R$ {data[hoveredIdx].cpa.toFixed(2).replace('.', ',')}</span></div>
+          </div>
+        </div>
+      ) : (
+        <div className="mt-4 grid md:grid-cols-2 gap-3 text-xs leading-relaxed">
+          <div className={`p-3 rounded-xl border ${isLight ? 'bg-amber-50/80 border-amber-200 text-amber-900' : 'bg-amber-950/20 border-amber-900/40 text-amber-300'} flex items-start gap-2.5`}>
+            <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+            <div>
+              <strong>Maio (6 pedidos):</strong> Pior mês do período porque a verba de Compra quase parou (R$95,42), migrando incorretamente para campanhas de Tráfego/Perfil.
+            </div>
+          </div>
+          <div className={`p-3 rounded-xl border ${isLight ? 'bg-rose-50/80 border-rose-200 text-rose-900' : 'bg-rose-950/20 border-rose-900/40 text-rose-300'} flex items-start gap-2.5`}>
+            <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+            <div>
+              <strong>Julho/Agosto (CPA subiu para R$19,85 e R$33,78):</strong> Efeito da <strong>fadiga de público e criativo</strong> mantido 2 a 3 meses sem renovação.
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+
   if (type === 'visual_drawflow') {
     return (
-      <div className="flex flex-col items-center py-12 w-full overflow-x-auto">
-         <h2 className={`text-4xl font-bold ${titleColor} mb-16 self-start`}>{d.titulo}</h2>
-         
-         <div className="min-w-[900px] w-full flex flex-col items-center relative">
-           {/* Top Node */}
-           <div className={`bg-blue-900/30 border border-blue-500/50 text-blue-400 font-bold px-8 py-4 rounded-xl flex items-center gap-3 z-10`}>
-              <Network className="w-5 h-5" />
-              Meta Ads & Tráfego Pago
-           </div>
+      <div className="flex flex-col items-center py-8 w-full overflow-x-auto">
+        <div className="w-full flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+          <div>
+            <h2 className={`text-4xl font-bold ${titleColor}`}>{d.titulo}</h2>
+            <p className={`text-base mt-2 ${subtitleColor}`}>{d.subtitulo || "Arquitetura otimizada para o orçamento aprovado de R$ 3.000/mês"}</p>
+          </div>
+          <div className="px-5 py-2.5 rounded-xl bg-red-600/10 border border-red-500/30 text-red-600 font-bold text-sm flex items-center gap-2 self-start">
+            <Target className="w-4 h-4" />
+            100% Foco em Conversão Rastreada
+          </div>
+        </div>
+        
+        <div className="min-w-[920px] w-full flex flex-col items-center relative">
+          {/* Top Node */}
+          <div className="bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 border-2 border-zinc-700 text-white font-extrabold px-10 py-4 rounded-2xl flex items-center gap-3 shadow-2xl z-10">
+            <DollarSign className="w-6 h-6 text-emerald-400" />
+            <div className="flex flex-col text-left">
+              <span className="text-xs uppercase tracking-widest text-zinc-400 font-semibold">Orçamento Total Mensal</span>
+              <span className="text-2xl text-emerald-400 font-black">R$ 3.000,00 / mês</span>
+            </div>
+          </div>
 
-           {/* Vertical line from Top */}
-           <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
-           
-           {/* Horizontal span line covering all 3 branches */}
-           <div className={`w-[80%] h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
-           
-           {/* 3 Dropdown lines */}
-           <div className="flex w-[80%] justify-between">
-              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
-                <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+          {/* Vertical line from Top */}
+          <div className={`h-10 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
+          
+          {/* Horizontal span line covering all 3 branches */}
+          <div className={`w-[85%] h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
+          
+          {/* 3 Dropdown lines */}
+          <div className="flex w-[85%] justify-between">
+            <div className={`h-10 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
+              <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+            </div>
+            <div className={`h-10 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
+              <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+            </div>
+            <div className={`h-10 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
+              <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+            </div>
+          </div>
+
+          {/* 3 Campaign Branch Nodes */}
+          <div className="flex w-full justify-between gap-6 px-4 mt-2 z-10">
+            
+            {/* Branch 1: Conversão (85%) */}
+            <div className={`flex-[1.2] ${cardBg} p-6 rounded-2xl text-left shadow-xl border-2 border-emerald-500/60 relative flex flex-col justify-between overflow-hidden`}>
+              <div className="absolute top-0 right-0 bg-emerald-500 text-white font-black text-xs px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                85% da Verba
               </div>
-              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
-                <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Motor Principal</span>
+                </div>
+                <h4 className={`font-black text-xl mb-1 ${titleColor}`}>Conversão Direta</h4>
+                <p className="text-2xl font-black text-emerald-600 mb-3">R$ 2.550 <span className="text-xs font-semibold text-zinc-500">/mês</span></p>
+                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-1.5`}>
+                  <p><strong>Público:</strong> Aberto + Visitantes (180d) + Seguidores</p>
+                  <p className="text-emerald-700 dark:text-emerald-400 font-medium">⚡ Rotação de criativos a cada 3 a 4 semanas para manter CPA baixo (R$8 a R$12)</p>
+                </div>
               </div>
-              <div className={`h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
-                <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+            </div>
+
+            {/* Branch 2: Remarketing (15%) */}
+            <div className={`flex-[1] ${cardBg} p-6 rounded-2xl text-left shadow-xl border-2 border-indigo-500/60 relative flex flex-col justify-between overflow-hidden`}>
+              <div className="absolute top-0 right-0 bg-indigo-500 text-white font-black text-xs px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                15% da Verba
               </div>
-           </div>
-
-           {/* Branch Nodes */}
-           <div className="flex w-full justify-between gap-6 px-12 mt-4 z-10">
-             <div className={`flex-1 ${cardBg} p-6 rounded-xl text-center shadow-lg relative`}>
-                <h4 className="font-bold text-red-500 mb-2 text-xl">Reconhecimento</h4>
-                <p className={`text-sm ${subtitleColor}`}>Público Frio • Awareness</p>
-             </div>
-             <div className={`flex-1 ${cardBg} p-6 rounded-xl text-center shadow-lg relative`}>
-                <h4 className="font-bold text-red-500 mb-2 text-xl">Conversão Delivery</h4>
-                <p className={`text-sm ${subtitleColor}`}>Remarketing • Foco em Pedidos</p>
-             </div>
-             <div className={`flex-1 ${cardBg} p-6 rounded-xl text-center shadow-lg relative`}>
-                <h4 className="font-bold text-red-500 mb-2 text-xl">Tração de Salão</h4>
-                <p className={`text-sm ${subtitleColor}`}>Pino Fixo • Experiência Local</p>
-             </div>
-           </div>
-
-           {/* Separate Convergence Paths */}
-           <div className="flex w-full justify-between gap-6 px-12 mt-0">
-             
-             {/* Left Group (Converges to Cardápio Web) */}
-             <div className="flex-[2] flex flex-col items-center relative pt-6">
-                <div className="flex w-[60%] justify-between absolute top-0">
-                  <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
-                  <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
+                  <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Fundo de Funil</span>
                 </div>
-                <div className={`w-[60%] h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} mt-8`} />
-                <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
-                  <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+                <h4 className={`font-black text-xl mb-1 ${titleColor}`}>Remarketing de Fundo</h4>
+                <p className="text-2xl font-black text-indigo-600 mb-3">R$ 450 <span className="text-xs font-semibold text-zinc-500">/mês</span></p>
+                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-1.5`}>
+                  <p><strong>Público:</strong> Visitou o Cardápio/Site e não comprou</p>
+                  <p className="text-indigo-700 dark:text-indigo-400 font-medium">🎯 Converte indecisos e recupera carrinhos sem atrito</p>
                 </div>
-                <div className="bg-red-600 text-white font-bold px-12 py-4 rounded-xl shadow-xl shadow-red-900/30 flex flex-col items-center gap-1 text-center mt-2 z-10 w-full max-w-sm justify-center">
-                   <span className="text-lg">Cardápio Web</span>
-                   <span className="text-sm font-normal text-red-100">Conversão Direta</span>
-                </div>
-             </div>
-
-             {/* Right Group (Goes to Visita ao Instagram) */}
-             <div className="flex-[1] flex flex-col items-center relative pt-6">
-                <div className={`h-16 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
-                  <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
-                </div>
-                <div className="bg-indigo-600 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-900/30 flex flex-col items-center gap-1 text-center mt-2 z-10 w-full">
-                   <span className="text-lg">Visita ao Instagram</span>
-                   <span className="text-sm font-normal text-indigo-200">Reconhecimento de Marca</span>
-                </div>
-             </div>
-             
-           </div>
-
-           {/* Connectors from Cardápio Web to CRM */}
-           <div className="w-full relative h-12">
-             {/* Vertical drop from Cardápio Web */}
-             <div className={`absolute top-0 h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} style={{ left: 'calc(48px + (100% - 120px) / 3)' }} />
-             
-             {/* Horizontal line from Cardápio Web to Center */}
-             <div className={`absolute top-12 h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} style={{ left: 'calc(48px + (100% - 120px) / 3)', right: '50%' }} />
-
-             {/* Vertical drop down into CRM */}
-             <div className={`absolute top-12 h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} style={{ left: '50%' }}>
-               <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
-             </div>
-           </div>
-
-           {/* Final CRM node */}
-           <div className="flex w-full flex-col items-center mt-8 relative z-10">
-              <div className="bg-emerald-900/30 border border-emerald-500/50 text-emerald-400 font-bold px-12 py-4 rounded-xl flex items-center gap-3">
-                 CRM, Retenção & LTV
               </div>
-           </div>
+            </div>
 
-         </div>
+            {/* Branch 3: Tráfego/Engajamento Eliminado (0%) */}
+            <div className={`flex-[0.9] ${isLight ? 'bg-red-50/70 border-red-200' : 'bg-red-950/20 border-red-900/50'} p-6 rounded-2xl text-left shadow-lg border-2 border-dashed relative flex flex-col justify-between opacity-85`}>
+              <div className="absolute top-0 right-0 bg-red-600 text-white font-black text-xs px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                0% (Corte Total)
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-2 text-red-600">
+                  <Ban className="w-4 h-4" />
+                  <span className="text-xs font-bold uppercase tracking-wider">Linha Eliminada</span>
+                </div>
+                <h4 className="font-bold text-lg text-red-700 dark:text-red-400 mb-1 line-through">Tráfego & Engajamento</h4>
+                <p className="text-2xl font-black text-zinc-400 mb-3">R$ 0,00</p>
+                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-400'} space-y-1`}>
+                  <p className="text-red-600 dark:text-red-400 font-medium">🚫 Histórico queimou 45% (R$4.615) com ZERO pedidos gerados.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Convergence Paths (Lines from Branch 1 & 2 to Center) */}
+          <div className="flex w-full justify-between px-4 mt-0">
+            {/* Left convergence for 85% and 15% */}
+            <div className="flex-[2.2] flex flex-col items-center relative pt-6">
+              <div className="flex w-[65%] justify-between absolute top-0">
+                <div className={`h-8 w-px ${isLight ? 'bg-emerald-500' : 'bg-emerald-500'}`} />
+                <div className={`h-8 w-px ${isLight ? 'bg-indigo-500' : 'bg-indigo-500'}`} />
+              </div>
+              <div className={`w-[65%] h-0.5 bg-gradient-to-r from-emerald-500 to-indigo-500 mt-8`} />
+              <div className={`h-8 w-px bg-red-600 relative`}>
+                <ChevronRight className="absolute -bottom-2 -left-2.5 w-5 h-5 text-red-600 rotate-90" />
+              </div>
+              
+              {/* Cardápio Web Central Node */}
+              <div className="bg-gradient-to-r from-red-600 to-rose-700 text-white font-bold p-6 rounded-2xl shadow-2xl shadow-red-900/30 flex items-center justify-between gap-6 mt-2 z-10 w-full max-w-xl">
+                <div className="flex items-center gap-4">
+                  <div className="p-3.5 bg-white/10 rounded-xl">
+                    <ShoppingCart className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <span className="text-2xl font-black block">Cardápio Web Direto</span>
+                    <span className="text-sm font-normal text-red-100">Único destino com compras rastreadas e ROI validado</span>
+                  </div>
+                </div>
+                <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl text-right shrink-0">
+                  <span className="text-xs uppercase block text-red-100 font-bold">Histórico Real</span>
+                  <span className="text-lg font-black">353 Pedidos</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right cut indicator for Branch 3 */}
+            <div className="flex-[0.9] flex flex-col items-center relative pt-6 opacity-40">
+              <div className="h-14 w-px border-l-2 border-dashed border-red-400" />
+              <div className="px-4 py-2 rounded-lg bg-red-100 dark:bg-red-950/40 text-red-600 text-xs font-bold flex items-center gap-1.5 mt-2">
+                <Ban className="w-3.5 h-3.5" />
+                Sem fluxo para vendas
+              </div>
+            </div>
+          </div>
+
+          {/* Connector from Cardápio Web to CRM */}
+          <div className="w-full relative h-12">
+            <div className={`absolute top-0 h-12 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} style={{ left: 'calc(16px + (100% - 32px) * 0.355)' }} />
+            <div className={`absolute top-12 h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} style={{ left: 'calc(16px + (100% - 32px) * 0.355)', right: '50%' }} />
+            <div className={`absolute top-12 h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} style={{ left: '50%' }}>
+              <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+            </div>
+          </div>
+
+          {/* Final CRM node */}
+          <div className="flex w-full flex-col items-center mt-8 relative z-10">
+            <div className={`${isLight ? 'bg-emerald-50 border-emerald-300 text-emerald-800' : 'bg-emerald-950/40 border-emerald-500/50 text-emerald-400'} border-2 px-10 py-5 rounded-2xl flex items-center gap-4 shadow-xl max-w-lg w-full justify-center`}>
+              <RefreshCw className="w-6 h-6 text-emerald-500 animate-spin-slow" />
+              <div className="text-left">
+                <span className="text-lg font-black block">CRM, Retenção & LTV</span>
+                <span className={`text-xs ${isLight ? 'text-emerald-700' : 'text-emerald-300'}`}>Pós-venda ativo, recompra contínua e fidelização de clientes</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+
+  if (type === 'meta_ads_analysis') {
+    return (
+      <div className="flex flex-col h-full gap-8">
+        <h2 className={`text-4xl font-bold ${titleColor} mb-2`}>{d.titulo}</h2>
+        
+        {/* Top 3 KPI Cards */}
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className={`${cardBg} p-6 rounded-2xl shadow-lg border-l-4 border-indigo-500 flex flex-col gap-2`}>
+            <span className={`text-sm font-semibold ${subtitleColor}`}>Investido no Período</span>
+            <span className="text-3xl font-black text-indigo-600">{d.investimento}</span>
+            <span className="text-xs text-zinc-400">~8,5 meses • média R$1.212/mês</span>
+          </div>
+          <div className={`${cardBg} p-6 rounded-2xl shadow-lg border-l-4 border-emerald-500 flex flex-col gap-2`}>
+            <span className={`text-sm font-semibold ${subtitleColor}`}>CPA Médio (Compra)</span>
+            <span className="text-3xl font-black text-emerald-600">{d.cpa_medio}</span>
+            <span className="text-xs text-emerald-600 font-semibold">353 pedidos gerados comprovados</span>
+          </div>
+          <div className={`${cardBg} p-6 rounded-2xl shadow-lg border-l-4 border-red-500 flex flex-col gap-2`}>
+            <span className={`text-sm font-semibold ${subtitleColor}`}>Verba sem venda rastreada</span>
+            <span className="text-3xl font-black text-red-600">{d.verba_perdida}</span>
+            <span className="text-xs text-red-500 font-semibold">{d.venda_zero?.valor || "R$4.615,83"} em tráfego/engajamento</span>
+          </div>
+        </div>
+
+        {/* Combo Chart (Pedidos vs. CPA) */}
+        <HistoricalMetaAdsChart isLight={isLight} />
+
+        {/* 2 Bottom Columns: Funcionou vs Não Funcionou */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* O que funcionou */}
+          <div className={`${isLight ? 'bg-emerald-50' : 'bg-emerald-950/20'} p-8 rounded-2xl border border-emerald-200/50 flex flex-col`}>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-3 bg-emerald-500 rounded-xl text-white shadow-md shadow-emerald-500/20">
+                <CheckCircle2 className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-emerald-700 dark:text-emerald-400">O que funcionou (Repetir & Escalar)</h3>
+                <p className={`text-sm ${subtitleColor}`}>Gerou {d.venda_rastreada.pedidos} pedidos ({d.venda_rastreada.valor})</p>
+              </div>
+            </div>
+            <ul className="flex flex-col gap-4">
+              {d.funcionou.map((item: string, i: number) => (
+                <li key={i} className="flex gap-3 items-start">
+                  <div className="mt-1.5 w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                  <span className={`text-sm leading-relaxed ${isLight ? 'text-zinc-700' : 'text-zinc-300'}`}>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* O que nao funcionou */}
+          <div className={`${isLight ? 'bg-red-50' : 'bg-red-950/20'} p-8 rounded-2xl border border-red-200/50 flex flex-col`}>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-3 bg-red-500 rounded-xl text-white shadow-md shadow-red-500/20">
+                <AlertTriangle className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-red-700 dark:text-red-400">Não deu certo (Cortar Definitivamente)</h3>
+                <p className={`text-sm ${subtitleColor}`}>0 pedidos rastreados ({d.venda_zero.valor} desperdiçados)</p>
+              </div>
+            </div>
+            <ul className="flex flex-col gap-4">
+              {d.nao_funcionou.map((item: string, i: number) => (
+                <li key={i} className="flex gap-3 items-start">
+                  <div className="mt-1.5 w-2 h-2 rounded-full bg-red-500 shrink-0" />
+                  <span className={`text-sm leading-relaxed ${isLight ? 'text-zinc-700' : 'text-zinc-300'}`}>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === 'media_projection') {
+    return (
+      <div className="flex flex-col h-full items-center justify-center py-8">
+        <h2 className={`text-4xl font-bold ${titleColor} mb-2`}>{d.titulo}</h2>
+        <p className={`text-xl ${subtitleColor} mb-12`}>Orçamento aprovado: <strong className="text-emerald-600">{d.orcamento}</strong></p>
+
+        <div className="w-full max-w-5xl grid md:grid-cols-3 gap-8 mb-12">
+          {d.cenarios.map((cenario: any, i: number) => {
+            let color = 'text-zinc-500';
+            let bg = isLight ? 'bg-zinc-100' : 'bg-zinc-800';
+            let border = 'border-zinc-200 dark:border-zinc-700';
+            
+            if (i === 0) { color = 'text-amber-500'; bg = isLight ? 'bg-amber-50' : 'bg-amber-950/30'; border = 'border-amber-200 dark:border-amber-900/50'; }
+            if (i === 1) { color = 'text-indigo-500'; bg = isLight ? 'bg-indigo-50' : 'bg-indigo-950/30'; border = 'border-indigo-200 dark:border-indigo-900/50'; }
+            if (i === 2) { color = 'text-emerald-500'; bg = isLight ? 'bg-emerald-50' : 'bg-emerald-950/30'; border = 'border-emerald-200 dark:border-emerald-900/50'; }
+
+            return (
+              <div key={i} className={`${cardBg} rounded-3xl p-8 border-2 ${border} shadow-xl flex flex-col items-center text-center relative overflow-hidden`}>
+                 <div className={`absolute top-0 inset-x-0 h-2 ${color.replace('text', 'bg')}`} />
+                 <h4 className={`text-lg font-bold uppercase tracking-wider ${color} mb-6`}>{cenario.nome}</h4>
+                 <div className="flex flex-col items-center gap-2 mb-6">
+                   <span className="text-5xl font-black">{cenario.pedidos}</span>
+                   <span className={`text-sm font-medium ${subtitleColor}`}>pedidos / mês</span>
+                 </div>
+                 <div className={`mt-auto ${bg} px-6 py-3 rounded-xl w-full`}>
+                   <span className={`font-bold ${color}`}>CPA {cenario.cpa}</span>
+                 </div>
+              </div>
+            )
+          })}
+        </div>
+
+        <div className={`max-w-4xl w-full ${isLight ? 'bg-blue-50 border-blue-100' : 'bg-blue-950/20 border-blue-900/50'} border p-6 rounded-2xl flex items-start gap-4`}>
+           <div className="p-3 bg-blue-500 text-white rounded-xl shrink-0">
+             <Target className="w-6 h-6" />
+           </div>
+           <div>
+             <h4 className="text-blue-700 dark:text-blue-400 font-bold text-lg mb-1">Alcance Estimado</h4>
+             <p className={`${isLight ? 'text-blue-900/80' : 'text-blue-200/80'} leading-relaxed`}>
+               {d.alcance_estimado}
+             </p>
+           </div>
+        </div>
       </div>
     )
   }

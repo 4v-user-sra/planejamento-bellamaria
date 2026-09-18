@@ -119,14 +119,42 @@ export const presentationData = {
     },
     {
       "id": "07_analise_meta",
-      "slide_type": "diagnostic_analysis",
+      "slide_type": "meta_ads_analysis",
       "content_slots": {
-        "titulo_slide": "Análise do Gerenciador de Anúncios (Meta Ads)",
-        "image_placeholder": "Print do Gerenciador (Meta Ads)",
-        "insights_bullets": [
-          "Falta de Visibilidade de Retorno: Anteriormente, havia investimento em tráfego, mas sem clareza se estava trazendo resultados ou vendas mensuráveis.",
-          "Falta de Funil e Geolocalização: Campanhas sem segmentação cirúrgica. Sendo um negócio local focado em qualidade e entrega (15-20 min), os raios precisam ser exatos (Alphaville, Residenciais, Aldeia da Serra).",
-          "Estratégia de Aquisição: Estruturar as campanhas de forma que o delivery atue como porta de entrada (Público Frio) e depois migrá-los para a experiência de Salão (Upsell)."
+        "titulo": "Análise Histórica - Meta Ads",
+        "investimento": "R$10.339,38",
+        "cpa_medio": "R$13,70",
+        "verba_perdida": "45%",
+        "venda_rastreada": {
+          "valor": "R$4.836,80",
+          "pedidos": 353,
+          "origem": "Campanhas de Compra (Cardápio Web)"
+        },
+        "venda_zero": {
+          "valor": "R$4.615,83",
+          "pedidos": 0,
+          "origem": "Tráfego, Perfil e Engajamento"
+        },
+        "historico_mensal": [
+          { "mes": "Jan", "pedidos": 45, "cpa": 8.33, "investimento": "R$ 374,85" },
+          { "mes": "Fev", "pedidos": 59, "cpa": 21.09, "investimento": "R$ 1.244,31" },
+          { "mes": "Mar", "pedidos": 76, "cpa": 8.41, "investimento": "R$ 639,16" },
+          { "mes": "Abr", "pedidos": 83, "cpa": 11.83, "investimento": "R$ 981,89" },
+          { "mes": "Mai", "pedidos": 6, "cpa": 15.92, "investimento": "R$ 95,42", "alerta": "Verba de venda quase parou" },
+          { "mes": "Jun", "pedidos": 68, "cpa": 14.63, "investimento": "R$ 994,82" },
+          { "mes": "Jul", "pedidos": 36, "cpa": 19.85, "investimento": "R$ 714,60", "alerta": "Início da fadiga de criativo" },
+          { "mes": "Ago", "pedidos": 11, "cpa": 33.78, "investimento": "R$ 371,56", "alerta": "Fadiga severa de criativo" }
+        ],
+        "cpa_referencia_historica": 13.70,
+        "funcionou": [
+          "Objetivo Compra direto no Cardápio Web (único caminho que gerou pedidos rastreados).",
+          "Público aberto + remarketing de site + seguidores (superou públicos fechados).",
+          "Criativo novo a cada ciclo sustentou CPA baixo (R$8 a R$12)."
+        ],
+        "nao_funcionou": [
+          "Tráfego e Engajamento consumiram 45% da verba sem gerar nenhum pedido rastreável.",
+          "Lookalike 1% da lista de clientes teve o pior custo por pedido (R$33,78).",
+          "Reaproveitar o mesmo público e criativo por muitas semanas degradou o CPA de forma consistente."
         ]
       }
     },
@@ -318,16 +346,16 @@ export const presentationData = {
       "id": "17_objetivo_smart",
       "slide_type": "smart_goal_okr",
       "content_slots": {
-        "titulo": "Objetivo SMART",
-        "fase_projeto": "Até Dezembro (Período Variável)",
-        "objetivo_geral": "Encontrar os indicadores de tráfego e de performance com base na estratégia de campanhas decidida. Após esse período inicial de testes, definir a viabilidade do CAC, otimizar indicadores e, então, planejar e aplicar a escala.",
-        "kr1_texto": "Encontrar e estabelecer todos os indicadores base de performance (CAC, LTV, ROAS inicial).",
-        "kr2_texto": "Atingir o ROI 1 do projeto (Break-even).",
-        "kr3_texto": "Atingir um ROAS maior que 10 no final desse período de testes e validação.",
+        "titulo": "Objetivos e Foco de Escala",
+        "fase_projeto": "Plano de Manutenção e Otimização",
+        "objetivo_geral": "Otimizar o orçamento de R$3.000/mês baseando-se no histórico real (onde o CPA de R$13,70 já foi comprovado). O foco é parar o desperdício com campanhas de Tráfego/Engajamento e escalar as Campanhas de Compra no Cardápio Web.",
+        "kr1_texto": "Manter o CPA médio no patamar validado (entre R$9 e R$13).",
+        "kr2_texto": "Rotacionar criativos a cada 3-4 semanas para evitar a fadiga de público.",
+        "kr3_texto": "Alcançar a projeção otimista de 305 pedidos/mês com o investimento mensal.",
         "insights_operacionais": [
-          "Mapeamento claro de conversão",
-          "Foco na saúde da margem inicial",
-          "Projeção para escala futura"
+          "100% focado em Conversão (Site)",
+          "Eliminação de campanhas de curtidas",
+          "Renovação constante de criativos"
         ]
       }
     },
@@ -356,22 +384,22 @@ export const presentationData = {
       "id": "13_estrategia_campanhas",
       "slide_type": "campaign_strategy_boxes",
       "content_slots": {
-        "titulo": "Estratégia de Campanhas",
+        "titulo": "Proposta de Alocação de Verba",
         "boxes": [
           {
-            "percentual": "30%",
-            "nome": "Reconhecimento",
-            "detalhes": "Finais de Semana (Sexta a Dom), Raio 8km (Público Frio). Foco em vídeos de Making-of para construir desejo."
+            "percentual": "85%",
+            "nome": "Conversão (Compras no site)",
+            "detalhes": "R$2.550/mês. Público aberto + Visitantes do site (180d) + Seguidores. Único caminho validado que gera pedidos rastreados. Troca de criativos a cada 3 a 4 semanas."
           },
           {
-            "percentual": "60%",
-            "nome": "Conversão Delivery",
-            "detalhes": "Dias Ociosos (Quarta e Quinta), Raio 5km (Tempo de Entrega). Envio direto para o Cardápio Web."
+            "percentual": "15%",
+            "nome": "Remarketing de Fundo de Funil",
+            "detalhes": "R$450/mês. Focado em quem visitou e não comprou. Mantém a recorrência e conversão de indecisos."
           },
           {
-            "percentual": "10%",
-            "nome": "Tração de Salão",
-            "detalhes": "Regiões Distantes (Ex: Aldeia da Serra). Campanha Local focada na exclusividade da experiência no balcão/salão."
+            "percentual": "0%",
+            "nome": "Tráfego / Visitas ao Perfil",
+            "detalhes": "Nenhuma verba! O histórico mostrou que essas linhas consumiram quase metade do orçamento passado (R$4.615) sem gerar um único pedido rastreável."
           }
         ]
       }
@@ -396,7 +424,9 @@ export const presentationData = {
       "id": "18_drawflow_funil",
       "slide_type": "visual_drawflow",
       "content_slots": {
-        "titulo": "Drawflow do Funil de Campanhas"
+        "titulo": "Drawflow do Funil de Campanhas",
+        "subtitulo": "Estrutura validada para o orçamento de R$ 3.000/mês",
+        "orcamento_total": "R$ 3.000/mês"
       }
     },
     {
@@ -405,17 +435,34 @@ export const presentationData = {
       "content_slots": {
         "titulo": "Cronograma & Fases de Implementação",
         "tipo_planilha": "Cronograma",
-        "imagem_url": "https://i.imgur.com/Gr2d8w2.png",
+        "imagem_url": "https://i.imgur.com/HFf8R65.png",
         "link_planilha": "https://docs.google.com/spreadsheets/d/1Bmqkf-7IFGMZEMWW5Wu-n8E1NoEOe-fkmM17oapbpxU/edit?gid=652949990#gid=652949990"
       }
     },
     {
       "id": "20_plano_midia",
-      "slide_type": "spreadsheet_placeholder",
+      "slide_type": "media_projection",
       "content_slots": {
-        "titulo": "Plano de Mídia (Investimento)",
-        "tipo_planilha": "Plano de Mídia",
-        "imagem_url": "https://i.imgur.com/22EhL8q.png"
+        "titulo": "Projeção de Resultados",
+        "orcamento": "R$ 3.000/mês",
+        "cenarios": [
+          {
+            "nome": "Conservador",
+            "pedidos": "~166",
+            "cpa": "R$18,00"
+          },
+          {
+            "nome": "Médio - Referência",
+            "pedidos": "~219",
+            "cpa": "R$13,70"
+          },
+          {
+            "nome": "Otimista",
+            "pedidos": "~305",
+            "cpa": "R$9,83"
+          }
+        ],
+        "alcance_estimado": "Com o CPM histórico de R$17,58 e frequência média de 2.0, geram-se cerca de 170 mil impressões, alcançando aproximadamente 85 mil pessoas únicas por mês na região de entrega."
       }
     }
   ]
